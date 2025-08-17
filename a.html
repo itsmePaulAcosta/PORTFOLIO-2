@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Paul | Portfolio</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Slick Slider CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+
+<style>
+/* ---------- Global ---------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', sans-serif; background:#121212; color:#f5f5f5; scroll-behavior:smooth; }
+a { text-decoration:none; color:#facc15; }
+a:hover { color:#fff; }
+
+/* ---------- Navbar ---------- */
+nav { background:#1a1a1a; position:sticky; top:0; z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,0.4);}
+.nav-container { max-width:1000px; margin:auto; display:flex; justify-content:space-between; align-items:center; padding:12px;}
+nav ul { list-style:none; display:flex; gap:20px; }
+nav ul li a { font-weight:bold; transition:0.3s; }
+nav ul li a:hover { color:#facc15; }
+.menu-toggle { display:none; font-size:1.8rem; cursor:pointer; color:#facc15; }
+
+/* ---------- Hero ---------- */
+.hero { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; max-width:1000px; margin:auto; padding:50px 20px; gap:30px; }
+.hero-img { flex:1 1 250px; text-align:center; }
+.hero-img img { width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:0; }
+.hero-text { flex:1 1 300px; }
+.hero-text h1 { font-size:2.5rem; color:#facc15; margin-bottom:10px; }
+.hero-text p { font-size:1rem; color:#ccc; margin-bottom:15px; }
+.connect-social { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+.connect-btn { background:#facc15; color:#121212; padding:6px 14px; border-radius:20px; font-weight:bold; transition:0.3s; }
+.connect-btn:hover { background:#fff176; transform:translateY(-2px); }
+.connect-social a { font-size:1.5rem; color:#f5f5f5; transition:0.3s; }
+.connect-social a:hover { color:#facc15; }
+
+/* ---------- Role Cards ---------- */
+.roles-cards { margin-top:20px; display:flex; gap:20px; flex-wrap:wrap; justify-content:center; }
+.role-card { background:#1f1f1f; border-radius:12px; width:150px; text-align:center; cursor:pointer; transition:0.3s; }
+.role-card img { width:100%; height:150px; object-fit:cover; filter:grayscale(30%) brightness(80%); transition:0.3s; }
+.role-card p { color:#facc15; font-weight:bold; margin:10px 0; }
+.role-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(250,204,21,0.6);}
+.role-card:hover img { filter:grayscale(0) brightness(100%); }
+
+/* ---------- Sections ---------- */
+section { padding:50px 20px; max-width:1000px; margin:auto; opacity:0; transform:translateY(50px); transition:0.8s; }
+section.show { opacity:1; transform:translateY(0);}
+h2 { font-size:2rem; margin-bottom:20px; color:#facc15; border-bottom:2px solid #facc15; display:inline-block; padding-bottom:5px; }
+
+/* ---------- About ---------- */
+.about-container { display:flex; flex-wrap:wrap; align-items:center; gap:30px; }
+.about-img img { width:100%; max-width:200px; border-radius:12px; border:4px solid #facc15; }
+.about-text { flex:1; color:#ccc; font-size:1rem; }
+
+/* ---------- Projects Slider ---------- */
+.project-slider .slick-slide { display:flex; justify-content:center; padding:10px; }
+.project-slider img { width:100%; max-width:300px; height:200px; object-fit:cover; border-radius:12px; border:2px solid #facc15; transition:0.3s; }
+.project-slider img:hover { transform:scale(1.05); box-shadow:0 8px 20px rgba(250,204,21,0.6); }
+
+/* ---------- Contact ---------- */
+#contact { text-align:center; }
+#contact p { margin:10px 0; color:#ccc; }
+
+/* ---------- Footer ---------- */
+footer { background:#1a1a1a; color:#bbb; padding:20px 0; text-align:center; border-top:2px solid #facc15; }
+footer a { margin:0 10px; color:#facc15; }
+footer a:hover { color:#fff; }
+
+/* ---------- Mobile ---------- */
+@media(max-width:768px){
+  .hero { flex-direction:column; text-align:center; }
+  nav ul { display:none; flex-direction:column; background:#1a1a1a; position:absolute; top:60px; right:0; width:200px; padding:15px; }
+  nav ul.show { display:flex; }
+  .menu-toggle { display:block; }
+}
+@media(max-width:480px){
+  .hero-text h1 { font-size:1.8rem; }
+  .hero-text p { font-size:0.95rem; }
+  .connect-social a { font-size:1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-container">
+    <div class="logo" style="color:#facc15; font-weight:bold;">Portfolio</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <ul id="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-img"><img src="profile.jpg" alt="Profile"></div>
+  <div class="hero-text">
+    <h1>John Paul</h1>
+    <p>A creative web designer and developer crafting digital experiences that leave a lasting impression.</p>
+    <div class="connect-social">
+      <a href="#contact" class="connect-btn">Connect</a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="roles-cards">
+      <div class="role-card"><img src="gamer.jpg" alt="Gamer"><p>Gamer</p></div>
+      <div class="role-card"><img src="designer.jpg" alt="Designer"><p>Designer</p></div>
+      <div class="role-card"><img src="developer.jpg" alt="Developer"><p>Developer</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-container">
+    <div class="about-img"><img src="profile.jpg" alt="Profile"></div>
+    <div class="about-text">
+      <p>I am a BSIT graduate specializing in web development and graphic design. Skilled with HTML, CSS, JavaScript, PHP, and WordPress. Passionate about crafting responsive and visually appealing websites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-slider">
+    <div><img src="project1.jpg" alt="Project 1"></div>
+    <div><img src="project2.jpg" alt="Project 2"></div>
+    <div><img src="project3.jpg" alt="Project 3"></div>
+    <div><img src="project4.jpg" alt="Project 4"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: example@gmail.com</p>
+  <p>Phone: +63 906 967 8170</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>Connect with me:</p>
+  <a href="#">GitHub</a>
+  <a href="#">LinkedIn</a>
+  <a href="#">Facebook</a>
+</footer>
+
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script>
+  // Hamburger Menu
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  menuToggle.addEventListener("click", () => { navLinks.classList.toggle("show"); });
+
+  // Scroll Reveal
+  const sections = document.querySelectorAll("section");
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.8;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if(rect.top < triggerBottom) section.classList.add("show");
+    });
+  };
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+
+  // Slick Slider
+  $(document).ready(function(){
+    $('.project-slider').slick({
+      slidesToShow: 3,
+      slidesToScroll:1,
+      arrows:true,
+      dots:true,
+      centerMode:true,
+      responsive:[
+        { breakpoint: 768, settings:{ slidesToShow:1 } },
+        { breakpoint: 1024, settings:{ slidesToShow:2 } }
+      ]
+    });
+  });
+</script>
+
+</body>
+</html>
